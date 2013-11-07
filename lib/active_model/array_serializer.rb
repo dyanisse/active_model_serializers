@@ -22,7 +22,7 @@ module ActiveModel
     end
     attr_accessor :object, :root, :meta_key, :meta
 
-    def json_key
+    def root_key
       if root.nil?
         @options[:resource_name]
       else
