@@ -15,15 +15,24 @@ module ActiveModel
     def initialize(object, options={})
       @object          = object
       @root            = options.fetch(:root, self.class._root)
+      @xml_root        = options.fetch(:xml_root, self.class._root)
       @meta_key        = options[:meta_key] || :meta
       @meta            = options[@meta_key]
       @each_serializer = options[:each_serializer]
       @options         = options.merge(root: nil)
     end
-    attr_accessor :object, :root, :meta_key, :meta
+    attr_accessor :object, :root, :xml_root, :meta_key, :meta
 
     def root_key
       if root.nil?
+        @options[:resource_name]
+      else
+        root
+      end
+    end
+
+    def xml_root_key
+      if xml_root.nil?
         @options[:resource_name]
       else
         root
