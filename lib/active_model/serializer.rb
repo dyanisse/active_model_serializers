@@ -108,6 +108,7 @@ end
       @xml_root = options.fetch(:xml_root, @root)
       @meta_key = options[:meta_key] || :meta
       @meta     = options[@meta_key]
+      @wrap_in_array = options[:_wrap_in_array]
     end
     attr_accessor :object, :scope, :meta_key, :meta, :root, :xml_root
 
