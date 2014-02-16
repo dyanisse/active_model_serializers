@@ -26,19 +26,11 @@ module ActiveModel
     attr_accessor :object, :scope, :root, :xml_root, :meta_key, :meta
 
     def root_key
-      if root.nil?
-        @resource_name
-      else
-        root
-      end
+      root || @resource_name
     end
 
     def xml_root_key
-      if xml_root.nil?
-        @options[:resource_name]
-      else
-        root
-      end
+      @xml_root || "result"
     end
 
     def serializer_for(item)
